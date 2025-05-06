@@ -1,0 +1,8 @@
+# .NET MAUI
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+.vs/
