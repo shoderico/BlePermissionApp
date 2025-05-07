@@ -16,8 +16,10 @@ namespace BlePermissionApp
         private IService _gattService;
         private ICharacteristic _gattCharacteristic;
 
+        private readonly AppServices _appServices;
+
         // Constructor
-        public MainPage()
+        public MainPage(AppServices appServices)
         {
             InitializeComponent();
             BindingContext = this; // Set the page as the BindingContext
@@ -25,6 +27,8 @@ namespace BlePermissionApp
             _adapter = CrossBluetoothLE.Current.Adapter;
             _devices = new ObservableCollection<IDevice>();
             DevicesList.ItemsSource = _devices;
+
+            _appServices = appServices;
 
             // Handle discovered devices
             _adapter.DeviceDiscovered += (s, a) =>
@@ -44,6 +48,12 @@ namespace BlePermissionApp
 
             try
             {
+                if (!await _appServices.PlatformService.CheckBluetoothPermissionAsync(this))
+                {
+                    StatusLabel.Text = "Status: Bluetooth Permission denied";
+                    return;
+                }
+
                 await _adapter.StartScanningForDevicesAsync();
                 StatusLabel.Text = "Status: Scan completed";
             }

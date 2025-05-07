@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BlePermissionApp.Platforms;
+using BlePermissionApp.Shared.Services;
+using Microsoft.Extensions.Logging;
 
 namespace BlePermissionApp
 {
@@ -18,6 +20,11 @@ namespace BlePermissionApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            // Register services
+            builder.Services.AddSingleton<IPlatformService, PlatformService>();
+            builder.Services.AddSingleton<AppServices>();
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }
