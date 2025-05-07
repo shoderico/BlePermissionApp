@@ -28,5 +28,20 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app uses Bluetooth to connect to nearby devices for seamless communication.</string>
+
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This app requires Bluetooth to act as a peripheral device and share data with other devices.</string>
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs your location to provide location-based services, such as navigation or nearby recommendations.</string>
+
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+	</array>
 </dict>
 </plist>
