@@ -20,6 +20,10 @@ namespace BlePermissionApp.Platforms
             {
                 switch (BluetoothLE.State)
                 {
+                    case BluetoothState.TurningOn:
+                        Console.WriteLine("Bluetooth is Turning On");
+                        break;
+
                     case BluetoothState.On:
                         Console.WriteLine("Bluetooth is ON");
                         break;
